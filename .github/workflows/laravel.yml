@@ -1,4 +1,4 @@
-name: Laravel CI
+name: Laravel CI/CD
 
 on:
   push:
@@ -31,3 +31,19 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+
+  laravel-cd:
+    name: CD
+    needs: laravel-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USER}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          port: ${{secrets.SSH_PORT}}
+          script: |
+            ls -la
