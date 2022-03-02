@@ -49,4 +49,5 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           script: |
             ls -la
-            echo "${{secrets.SSH_USER_PASS}}" | sudo -S docker ps
+            echo "Listing Docker Containers" | sudo -S docker ps
+            echo "Listing Docker Images" | sudo -S docker images
