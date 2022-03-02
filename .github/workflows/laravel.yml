@@ -47,6 +47,7 @@ jobs:
           username: ${{secrets.SSH_USER}}
           key: ${{secrets.SSH_PRIVATE_KEY}}
           port: ${{secrets.SSH_PORT}}
+          envs: USER_PASS
           script: |
             ls -la
             echo "Listing Docker Containers" | sudo -S docker ps
