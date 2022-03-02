@@ -49,6 +49,7 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           envs: USER_PASS
           script: |
-            ls -la
-            echo "Listing Docker Containers" | sudo -S docker ps
-            echo "Listing Docker Images" | sudo -S docker images
+            echo "Listing Docker Containers"
+            sudo -S docker ps
+            echo "Listing Docker Images"
+            sudo -S docker images
