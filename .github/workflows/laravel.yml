@@ -64,3 +64,8 @@ jobs:
           script: |
             echo $USER_PASS | sudo -S docker ps
             echo $USER_PASS | sudo -S docker images
+
+            cd ci-cd/
+            echo $USER_PASS | sudo -S docker-compose up -d
+            echo $USER_PASS | sudo -S docker-compose exec -T app composer install
+            
